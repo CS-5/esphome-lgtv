@@ -19,7 +19,9 @@ void LGTVComponent::loop() {
 
 void LGTVComponent::send_command(const char *command) {
   write_str(command);
-  write_byte(0x0D); // Carriage Return
+  write_byte(0x0D);
+  delay(100);
+  this->read_response();
 }
 
 void LGTVComponent::query_power_status() {

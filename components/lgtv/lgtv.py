@@ -3,8 +3,8 @@ import esphome.config_validation as cv
 from esphome.components import uart
 from esphome.const import CONF_ID, CONF_POLLING_INTERVAL
 
-lg_tv_ns = cg.esphome_ns.namespace('lg_tv')
-LGTVComponent = lg_tv_ns.class_('LGTVComponent', cg.Component, uart.UARTDevice)
+lgtv_ns = cg.esphome_ns.namespace('lgtv')
+LGTVComponent = lgtv_ns.class_('LGTVComponent', cg.Component, uart.UARTDevice)
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(LGTVComponent),
