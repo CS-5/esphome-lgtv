@@ -6,18 +6,10 @@ namespace lgtv {
   void LGTV::setup() {}
 
   void LGTV::loop() {
-    static unsigned long last_query_time = 0;
-    unsigned long current_time = millis();
-
-    if (current_time - last_query_time > poll_interval) {
-      // Regularly query the TV for its state
+      delay(500);
       this->query_power_status();
-      delay(500);
       this->query_input_status();
-      delay(500);
       this->query_volume_status();
-      last_query_time = current_time;
-    }
   }
 
   void LGTV::send_command(const char *command) {

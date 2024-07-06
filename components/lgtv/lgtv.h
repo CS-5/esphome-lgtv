@@ -13,12 +13,10 @@ namespace lgtv {
     LGTV(uart::UARTComponent *parent) : UARTDevice(parent) {}
 
     void set_uart_parent(uart::UARTComponent *parent) { this->parent_ = parent; }
-    void set_poll_interval(uint32_t interval) { this->poll_interval = interval; }
 
     sensor::Sensor *power_status_sensor = new sensor::Sensor();
     sensor::Sensor *input_status_sensor = new sensor::Sensor();
     sensor::Sensor *volume_status_sensor = new sensor::Sensor();
-    int poll_interval;
 
     void setup() override;
     void loop() override;
@@ -35,7 +33,7 @@ namespace lgtv {
     void set_input(int input);
     void read_response();
   };
-  
+
 }
 }
 
