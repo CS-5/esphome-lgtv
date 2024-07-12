@@ -31,20 +31,20 @@ namespace lgtv {
     send_command("kf 01 FF");
   }
 
-  void LGTV::power_on() {
-    send_command("ka 01 01");
+  void LGTV::power(bool on) {
+    if (on) {
+      send_command("ka 01 01");
+    } else {
+      send_command("ka 01 00");
+    }
   }
 
-  void LGTV::power_off() {
-    send_command("ka 01 00");
-  }
-
-  void LGTV::volume_mute_on() {
-    send_command("ke 01 00");
-  }
-
-  void LGTV::volume_mute_off() {
-    send_command("ke 01 01");
+  void LGTV::volume_mute(bool mute) {
+    if (mute) {
+      send_command("ke 01 00");
+    } else {
+      send_command("ke 01 01");
+    }
   }
 
   void LGTV::set_volume(int volume) {

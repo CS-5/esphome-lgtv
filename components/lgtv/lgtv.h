@@ -25,10 +25,8 @@ namespace lgtv {
     void query_power_status();
     void query_input_status();
     void query_volume_status();
-    void power_on();
-    void power_off();
-    void volume_mute_on();
-    void volume_mute_off();
+    void power(bool on);
+    void volume_mute(bool mute);
     void set_volume(int volume);
     void set_input(int input);
     void read_response();
