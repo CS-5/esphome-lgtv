@@ -84,5 +84,30 @@ namespace lgtv {
     }
   }
 
+  void LGTV::transmit(remote_base::RemoteTransmitData *data) {
+  auto call = data->get_data();
+  if (call.is_on()) {
+    this->power(true);
+  } else if (call.is_off()) {
+    this->power(false);
+  } else if (call.get_command().has_value()) {
+    std::string command = *call.get_command();
+    if (command == "mute_on") {
+      this->volume_mute(true);
+    } else if (command == "mute_off") {
+      this->volume_mute(false);
+    } else if (command.substr(0, 6) == "volume") {
+      int volume = std::stoi(command.substr(7));
+      this->set_volume(volume);
+    } else if (command.substr(0, 5) == "input") {
+      int input = std::stoi(command.substr(6));
+      this->set_input(input);
+    } else {
+      this->send_command(command.c_str());
+    }
+  }
+}
+
+
 }
 }
